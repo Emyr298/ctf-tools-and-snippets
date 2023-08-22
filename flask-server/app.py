@@ -11,7 +11,7 @@ def get_csrf_html():
     
 @app.route('/error')
 def get_error():
-    time.sleep(5000)
+    time.sleep(5)
     return 'Error', 404
 
 if __name__ == '__main__':
