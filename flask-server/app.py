@@ -1,3 +1,4 @@
+import time
 from flask import Flask, request, redirect, render_template
 from flask_cors import CORS
 
@@ -10,6 +11,7 @@ def get_csrf_html():
     
 @app.route('/error')
 def get_error():
+    time.sleep(5000)
     return 'Error', 404
 
 if __name__ == '__main__':
