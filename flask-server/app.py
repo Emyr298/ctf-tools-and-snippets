@@ -25,7 +25,7 @@ def get_error():
 def get_static(filename):
     if not validate_filename(filename):
         return 'Invalid filename', 400
-    with open(filename, 'r') as file:
+    with open('static/' + filename, 'r') as file:
         content = file.read()
     return content, 200
 
