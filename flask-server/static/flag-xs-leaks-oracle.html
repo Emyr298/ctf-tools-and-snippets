@@ -23,6 +23,7 @@
                     elem.onerror = () => {
                         cnt++;
                         if (cnt >= 127 - 32 - 2 && curFlag[curFlag.length - 1] != '}') {
+                            console.log(cnt);
                             brute_force_flag(curFlag + '_');
                         }
                     };
