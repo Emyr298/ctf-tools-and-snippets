@@ -13,8 +13,8 @@ def validate_filename(filename: str):
     return True
 
 @app.route('/')
-def get_csrf_html():
-    return render_template('tbdxss.html'), 200
+def get_index():
+    return 'use static', 200
     
 @app.route('/error')
 def get_error():
