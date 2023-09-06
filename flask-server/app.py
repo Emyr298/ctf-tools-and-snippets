@@ -15,7 +15,22 @@ def validate_filename(filename: str):
 @app.route('/')
 def get_index():
     return 'use static', 200
-    
+
+@app.route('/redirect')
+def redirect_page():
+    url = request.args.get('url', None)
+    if not url:
+        return 'Invalid url', 400
+    if '{HOST}' in url:
+        to_local = request.args.get('to-local', None)
+        if to_local is not None:
+            url = url.replace('{HOST}', '127.0.0.1')
+    if '{PORT}' in url:
+        port = request.args.get('port', None)
+        if port is not None:
+            url = url.replace('{PORT}', port)
+    return redirect(url)
+
 @app.route('/error')
 def get_error():
     time.sleep(5)
