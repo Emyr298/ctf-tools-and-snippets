@@ -1,5 +1,5 @@
 import time
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template_string
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -12,8 +12,10 @@ def validate_filename(filename: str):
             return False
     return True
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def get_index():
+    flag = request.files.get('fl')
+    print(flag.stream.read())
     return 'use static', 200
 
 @app.route('/redirect')
@@ -43,7 +45,12 @@ def get_static(filename):
     with open('static/' + filename, 'r') as file:
         content = file.read()
     return content, 200
+    
+@app.route('/ssti')
+def ssti():
+    contents = request.args.get('contents')
+    return render_template_string(contents)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='127.0.0.1', port=5000)
     
