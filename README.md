@@ -1,5 +1,5 @@
-# CTF Snippets
-This repository contains snippets that can be used to create solver scripts.
+# CTF Tools and Snippets
+This repository contains tools and snippets that can be used to solve CTF problems.
 
 ## Snippets
 - [Cookie Stealer](https://github.com/Emyr298/ctf-snippets/tree/main/exploit-js): JavaScript code that steals cookie and send it to a webhook such as [webhook.site](https://webhook.site/), you can use it when there is a cross-site scripting vulnerability and the flag is in the admin bot's cookie.
